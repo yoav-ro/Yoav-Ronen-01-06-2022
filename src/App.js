@@ -7,12 +7,18 @@ function App() {
   return (
     <div className="App">
       <SearchBar />
-      <CityDisplay weatherData={mockForecast} />
+      <CityDisplay weatherData={mockForecast} cityData={mockCityData}/>
     </div>
   );
 }
 
 export default App;
+
+const mockCityData = {
+  cityName: "Tel Aviv",
+  key: 215854,
+  country: "Israel",
+}
 
 const mockForecast = {
   "Headline": {

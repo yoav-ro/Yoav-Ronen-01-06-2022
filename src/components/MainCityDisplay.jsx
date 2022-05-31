@@ -5,13 +5,14 @@ import DayForecast from "./dayForecast";
 
 function CityDisplay({ weatherData, cityData }) {
     const dailyForeCasts = weatherData["DailyForecasts"];
+    const { cityName, country } = cityData;
 
     return (
         <Grid container spacing={2}>
-            <Grid item justifyContent="center" xs={12}>
-                <div>city names</div>
+            <Grid item container justifyContent="center">
+                <div>{cityName} | {country}</div>
             </Grid>
-            <Grid item justifyContent="center"  container spacing={5}>
+            <Grid item justifyContent="center" container spacing={5}>
                 {dailyForeCasts.map((day, key) => {
                     return (
                         <Grid key={key} item>
