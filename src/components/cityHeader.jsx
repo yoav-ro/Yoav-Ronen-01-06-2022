@@ -9,9 +9,8 @@ function CityHeader({ cityData }) {
     return (
         <Grid container spacing={1}>
             <Grid item justifyContent="center" sx={{ mt: "15px" }}>
-                <FavoriteButton cityKey={key} />
+                <FavoriteButton cityData={cityData} />
             </Grid>
-
             <Grid item justifyContent="center">
                 <Grid container>
                     <Grid item container>
@@ -28,8 +27,6 @@ function CityHeader({ cityData }) {
                     </Grid>
                 </Grid>
             </Grid>
-
-
         </Grid>
     )
 }

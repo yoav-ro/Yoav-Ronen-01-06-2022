@@ -13,9 +13,9 @@ export default function favoritesReducer(state = initialState, action) {
         case favoritesReducerActionTypes.addFavorite:
             return [...state, action.data];
         case favoritesReducerActionTypes.removeFavorite:
-            const favoriteIndex = state.findIndex(item => item.key === action.data.key);
+            const favoriteIndex = state.findIndex(item => item.key === action.data);
             if (favoriteIndex !== -1) {
-                return state.slice(favoriteIndex, favoriteIndex + 1);
+                return state.slice(favoriteIndex, favoriteIndex);
             }
             else {
                 return state;
