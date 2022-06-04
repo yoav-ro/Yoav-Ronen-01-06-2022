@@ -3,16 +3,15 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrCity } from "../utils/actions";
-import { getCityWeather, getCityWeatherByKey } from "../utils/apiRequests";
+import { getCityWeatherByKey } from "../utils/apiRequests";
+import ControlBar from "./controlBar";
 import CityDisplay from "./MainCityDisplay";
 import SearchBar from "./SearchBar";
 
 function HomePage({ }) {
     const appData = useSelector(state => state.appDataReducer);
     const currCity = appData.currCityData;
-    const defaultCity = appData.defaultCityData;
     const [currWeatherDisplay, setCurrWeatherDisplay] = useState({ DailyForecasts: [] });
-    const dispatch = useDispatch();
 
     useEffect(() => {
         if (currCity.cityName !== "Tel Aviv") {
@@ -33,14 +32,9 @@ function HomePage({ }) {
 
     }, [])
 
-    const handleDefaultClick = () => {
-        dispatch(setCurrCity(defaultCity));
-    }
-
     return (
         <Box sx={{ mt: "20px", justifyItems: "center" }}>
-            <Button onClick={handleDefaultClick}>Default</Button>
-            <SearchBar setCurrWeather={setCurrWeatherDisplay} />
+            <ControlBar />
             <CityDisplay weatherData={currWeatherDisplay} cityData={currCity} />
         </Box>
     )
