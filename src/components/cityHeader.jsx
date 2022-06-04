@@ -4,7 +4,7 @@ import FavoriteButton from "./favoriteButton";
 
 function CityHeader({ cityData }) {
 
-    const { cityName, country, key } = cityData;
+    const { cityName, country } = cityData;
 
     return (
         <Grid container spacing={1}>

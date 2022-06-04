@@ -1,4 +1,4 @@
-import { favoritesReducerActionTypes } from "./utils/constants";
+import { favoritesReducerActionTypes } from "../utils/constants";
 const initialState = [];
 
 //Favorite example:
