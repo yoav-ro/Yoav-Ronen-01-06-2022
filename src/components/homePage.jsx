@@ -22,17 +22,18 @@ function HomePage({ }) {
                 });
             }
             else {
-                console.log("finding new city weather")
-                // const newForecast = getCityWeatherByKey(currCity.key);
-                // const newCurrentWeather = getCurrentWeatherByKey(currCity.key);
-                // Promise.all([newForecast, newCurrentWeather]).then((values) => {
-                //     setCurrWeatherDisplay({
-                //         forecast: values[0],
-                //         currWeather: values[1],
-                //     });
-                // });
+                if (currCity) {
+                    console.log("finding new city weather")
+                    // const newForecast = getCityWeatherByKey(currCity.key);
+                    // const newCurrentWeather = getCurrentWeatherByKey(currCity.key);
+                    // Promise.all([newForecast, newCurrentWeather]).then((values) => {
+                    //     setCurrWeatherDisplay({
+                    //         forecast: values[0],
+                    //         currWeather: values[1],
+                    //     });
+                    // });
+                }
             }
-
         }
         else {
             setCurrWeatherDisplay(

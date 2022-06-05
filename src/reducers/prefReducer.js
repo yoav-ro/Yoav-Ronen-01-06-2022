@@ -1,13 +1,13 @@
 import { prefReducerActionTypes } from "../utils/constants";
-const defaultCity = {
-    cityName: "Tel Aviv",
-    key: 215854,
-    country: "Israel",
-}
+// const defaultCity = {
+//     cityName: "Tel Aviv",
+//     key: 215854,
+//     country: "Israel",
+// }
 
 const initialState = {
-    defaultCityData: defaultCity,
-    currCityData: defaultCity,
+    defaultCityData: "",
+    currCityData: "",
     weatherUnit: "Metric",
 };
 
@@ -26,7 +26,12 @@ export default function prefReducer(state = initialState, action) {
                 currCityData: action.data,
                 weatherUnit: state.weatherUnit,
             };
-        // case appDataReducerActionTypes.setCurrCityWeather:
+        case prefReducerActionTypes.setDefaultCity:
+            return {
+                defaultCityData: action.data,
+                currCityData: state.currCityData,
+                weatherUnit: state.weatherUnit,
+            };
 
         default:
             return state;

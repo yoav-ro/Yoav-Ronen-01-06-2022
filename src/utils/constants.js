@@ -8,3 +8,9 @@ export const prefReducerActionTypes={
     setDefaultCity: "SET_DEFAULT_CITY",
     setCurrCityWeather: "SET_CURR_CITY_WEATHER",
 }
+
+export const telAvivData = {
+    cityName: "Tel Aviv",
+    key: 215854,
+    country: "Israel",
+}

@@ -1,4 +1,4 @@
-import { Grid, Typography, } from "@mui/material";
+import { Grid, Typography, Paper } from "@mui/material";
 import React from "react";
 import DayForecast from "./dayForecast";
 import CityHeader from "./cityHeader";
@@ -20,32 +20,35 @@ function CityDisplay({ weatherData, cityData }) {
     const iconImgUrl = `https://developer.accuweather.com/sites/default/files/${iconStr}-s.png`;
 
     return (
-        <Grid container spacing={2} >
-            <Grid item container justifyContent="center">
-                <Grid item>
-                    <CityHeader cityData={cityData} />
-                </Grid>
-                <Grid item sx={{ mt: "20px" }}>
-                    <Typography variant="h4">
-                        {weatherText}- {currTemp + " " + unitLetter}
-                    </Typography>
-                </Grid>
-                <Grid item sx={{ mt: "20px" }}>
-                    <img src={iconImgUrl} />
-                </Grid>
+        <Paper sx={{ mt: "40px", padding: "20px" }} elevation={5}>
+            <Grid container spacing={2} >
+                <Grid item container justifyContent="center">
+                    <Grid item>
+                        <CityHeader cityData={cityData} />
+                    </Grid>
+                    <Grid item sx={{ mt: "20px" }}>
+                        <Typography variant="h4">
+                            {weatherText}- {currTemp + " " + unitLetter}
+                        </Typography>
+                    </Grid>
+                    <Grid item sx={{ mt: "20px" }}>
+                        <img src={iconImgUrl} />
+                    </Grid>
 
 
+                </Grid>
+                <Grid item justifyContent="center" container spacing={5}>
+                    {dailyForeCasts.map((day, key) => {
+                        return (
+                            <Grid key={key} item>
+                                <DayForecast dayForecastData={day} />
+                            </Grid>
+                        )
+                    })}
+                </Grid>
             </Grid>
-            <Grid item justifyContent="center" container spacing={5}>
-                {dailyForeCasts.map((day, key) => {
-                    return (
-                        <Grid key={key} item>
-                            <DayForecast dayForecastData={day} />
-                        </Grid>
-                    )
-                })}
-            </Grid>
-        </Grid>
+        </Paper>
+
     )
 }
 
