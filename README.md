@@ -1,6 +1,6 @@
 # Weather App
 
-Welcome to the weather app! View deployment [here](https://yoav-ro.github.io/abra-weather/build/index.html)
+Welcome to the weather app! View deployment [here](https://yoav-ro.github.io/Yoav-Ronen-01-06-2022/build/index.html)
 
 Weather data provided via [AccuWeatherAPIs](https://developer.accuweather.com/)
 
