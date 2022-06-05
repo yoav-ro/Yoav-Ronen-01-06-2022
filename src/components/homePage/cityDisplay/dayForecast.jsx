@@ -24,8 +24,8 @@ function DayForecast({ dayForecastData }) {
 
     return (
         <Paper elevation={4} sx={{
-            height: 160,
-            width: 250,
+            height: 175,
+            width: 300,
         }}>
             <Grid container>
                 <Grid item container justifyContent="center">

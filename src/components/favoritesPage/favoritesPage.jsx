@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import React from "react";
 import FavoritesList from "./favoritesList";
 
-function FavoritesPage({ }) {
+function FavoritesPage() {
 
     return (
         <Grid container justifyContent="center">

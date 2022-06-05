@@ -4,7 +4,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import FavoriteItem from "./favoriteItem";
 
-function FavoritesList({ setCurrCity }) {
+function FavoritesList() {
     const favorites = useSelector(state => state.favoritesReducer);
 
     return (

@@ -1,10 +1,14 @@
-import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { ListItemIcon, ListItemText, ListItemButton } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setCurrCity } from "../../utils/actions";
 import { getCurrentWeatherByKey } from "../../utils/apiRequests";
 
 function FavoriteItem({ favoriteData }) {
     const prefrences = useSelector(state => state.prefReducer);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [itemData, setItemData] = useState("");
     const cityName = favoriteData.cityName
 
@@ -19,6 +23,12 @@ function FavoriteItem({ favoriteData }) {
     if (itemData === "") {
         return <></>
     }
+
+    const handleClick = () => {
+        dispatch(setCurrCity(favoriteData));
+        navigate("/");
+    }
+
     const weatherUnit = prefrences.weatherUnit;
     const weatherText = itemData["WeatherText"];
     const currTemp = itemData["Temperature"][weatherUnit]["Value"];
@@ -28,12 +38,12 @@ function FavoriteItem({ favoriteData }) {
     const tempText = " " + currTemp + " " + unitLetter;
 
     return (
-        <ListItem>
+        <ListItemButton onClick={handleClick} divider>
             <ListItemIcon>
                 <img src={iconImgUrl} />
             </ListItemIcon>
             <ListItemText primary={cityName} secondary={weatherText + tempText} />
-        </ListItem>
+        </ListItemButton>
     )
 }
 
