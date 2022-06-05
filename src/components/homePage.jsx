@@ -11,7 +11,7 @@ import SearchBar from "./SearchBar";
 function HomePage({ }) {
     const appData = useSelector(state => state.appDataReducer);
     const currCity = appData.currCityData;
-    const [currWeatherDisplay, setCurrWeatherDisplay] = useState({ DailyForecasts: [] });
+    const [currWeatherDisplay, setCurrWeatherDisplay] = useState({ Headline: { Text: "placeholder" }, DailyForecasts: [] });
 
     useEffect(() => {
         if (currCity.cityName !== "Tel Aviv") {
@@ -226,7 +226,17 @@ const mockForecast = {
 }
 
 const newYorkMock = {
-
+    "Headline": {
+        "EffectiveDate": "2022-05-31T20:00:00+03:00",
+        "EffectiveEpochDate": 1654016400,
+        "Severity": 7,
+        "Text": "Warm Tuesday night",
+        "Category": "heat",
+        "EndDate": "2022-06-01T08:00:00+03:00",
+        "EndEpochDate": 1654059600,
+        "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?unit=c&lang=en-us",
+        "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?unit=c&lang=en-us"
+    },
     "DailyForecasts": [
         {
             "Date": "2022-06-04T07:00:00-04:00",
