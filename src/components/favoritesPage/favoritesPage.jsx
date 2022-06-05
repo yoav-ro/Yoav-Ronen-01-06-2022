@@ -5,7 +5,7 @@ import FavoritesList from "./favoritesList";
 function FavoritesPage({ }) {
 
     return (
-        <Grid container>
+        <Grid container justifyContent="center">
             <Grid item>
                 <FavoritesList />
             </Grid>

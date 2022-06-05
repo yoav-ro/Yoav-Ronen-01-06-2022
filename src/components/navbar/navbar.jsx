@@ -5,7 +5,7 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import { useNavigate } from "react-router-dom";
 import SettingsMenu from "./settingsMenu";
 
-function Navbar() {
+function Navbar({ setDarkMode }) {
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
 
@@ -25,7 +25,6 @@ function Navbar() {
         navigate("/favorites");
     }
 
-
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" color="primary">
@@ -39,7 +38,7 @@ function Navbar() {
                     <IconButton onClick={handleMenu}>
                         <SettingsIcon />
                     </IconButton>
-                    <SettingsMenu anchorEl={anchorEl} onClose={handleClose}/>
+                    <SettingsMenu anchorEl={anchorEl} onClose={handleClose} setDarkMode={setDarkMode} />
                 </Toolbar>
             </AppBar>
         </Box>
