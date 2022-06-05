@@ -5,7 +5,7 @@ import FavoriteButton from "./favoriteButton";
 function CityHeader({ cityData }) {
 
     const { cityName, country } = cityData;
-
+    console.log(cityData);
     return (
         <Grid container spacing={1}>
             <Grid item justifyContent="center" sx={{ mt: "15px" }}>

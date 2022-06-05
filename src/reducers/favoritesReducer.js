@@ -1,13 +1,6 @@
 import { favoritesReducerActionTypes } from "../utils/constants";
 const initialState = [];
 
-//Favorite example:
-// {
-//     cityName: "Hod HaSharon",
-//     key: 12345,
-//     county: "Israel";
-// }
-
 export default function favoritesReducer(state = initialState, action) {
     switch (action.type) {
         case favoritesReducerActionTypes.addFavorite:

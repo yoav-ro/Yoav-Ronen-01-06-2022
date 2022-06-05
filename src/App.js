@@ -21,7 +21,7 @@ function App() {
   });
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(handleFail, handleFail);
+    navigator.geolocation.getCurrentPosition(handleSuccess, handleFail);
   }, [])
 
   const handleSuccess = async (value) => { // disabled to not waste api requests

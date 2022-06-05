@@ -1,17 +1,26 @@
 import { Paper, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import { useSelector } from "react-redux";
 
 function DayForecast({ dayForecastData }) {
+    const prefrences = useSelector(state => state.prefReducer);
+    const isMetric = prefrences.weatherUnit === "Metric";
     const date = new Date(dayForecastData["Date"]);
     const dateStr = `${date.getUTCDate()}/${date.getUTCMonth()}`;
 
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const dayName = days[date.getDay()]
 
-    const minTemp = dayForecastData["Temperature"]["Minimum"]["Value"];
-    const maxTemp = dayForecastData["Temperature"]["Maximum"]["Value"];
+    let minTemp = dayForecastData["Temperature"]["Minimum"]["Value"];
+    let maxTemp = dayForecastData["Temperature"]["Maximum"]["Value"];
 
+    if (!isMetric) {
+        minTemp = Math.round(minTemp * 9 / 5 + 32)
+        maxTemp = Math.round(maxTemp * 9 / 5 + 32)
+    }
+
+    const weatherUnit = isMetric ? "C°" : "F°";
     const dayWeather = dayForecastData["Day"];
     const dayIconStr = dayWeather["Icon"] < 10 ? "0" + dayWeather["Icon"] : dayWeather["Icon"];
     const dayIconPhrase = dayForecastData["Day"]["IconPhrase"];
@@ -21,6 +30,7 @@ function DayForecast({ dayForecastData }) {
     const nightIconStr = nightWeather["Icon"] < 10 ? "0" + nightWeather["Icon"] : nightWeather["Icon"];
     const nightIconPhrase = dayForecastData["Night"]["IconPhrase"];
     const nightImgUrl = `https://developer.accuweather.com/sites/default/files/${nightIconStr}-s.png`;
+
 
     return (
         <Paper elevation={4} sx={{
@@ -32,7 +42,7 @@ function DayForecast({ dayForecastData }) {
                     <Typography variant="h6">{dayName + " " + dateStr}</Typography>
                 </Grid>
                 <Grid item container justifyContent="center">
-                    {minTemp} - {maxTemp} C
+                    {minTemp} - {maxTemp} {weatherUnit}
                 </Grid>
                 <Grid item container justifyContent="center" spacing={4}>
                     <Grid item>

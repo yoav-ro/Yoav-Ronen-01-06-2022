@@ -19,7 +19,7 @@ function CityDisplay({ weatherData, cityData }) {
     const dailyForeCasts = weatherData.forecast["DailyForecasts"];
     const weatherText = currWeather["WeatherText"];
     const currTemp = currWeather["Temperature"][weatherUnit]["Value"];
-    const unitLetter = weatherUnit === "Metric" ? "C" : "F";
+    const unitLetter = weatherUnit === "Metric" ? "C°" : "F°";
     const iconStr = currWeather["WeatherIcon"] < 10 ? "0" + currWeather["WeatherIcon"] : currWeather["WeatherIcon"];
     const iconImgUrl = `https://developer.accuweather.com/sites/default/files/${iconStr}-s.png`;
 

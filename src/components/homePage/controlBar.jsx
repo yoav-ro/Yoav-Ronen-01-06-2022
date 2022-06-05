@@ -1,8 +1,8 @@
-import { Button, Grid } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrCity } from "../../utils/actions";
-import SearchBar from "./SearchBar";
+import AutoCompleteSearch from "./cityDisplay/autoCompleteSearch";
 
 function ControlBar({ }) {
     const prefrences = useSelector(state => state.prefReducer);
@@ -14,17 +14,10 @@ function ControlBar({ }) {
     }
 
     return (
-        <Grid container>
-            <Grid item xs={2} textAlign="start">
-                <Button onClick={handleDefaultClick} variant="outlined">Default</Button>
-            </Grid>
-            <Grid item xs={8}>
-                <SearchBar />
-            </Grid>
-            <Grid item xs={2} textAlign="end">
-                <Button variant="outlined">Chart View</Button>
-            </Grid>
-        </Grid>
+        <Box justifyContent="center" display="flex">
+            <Button onClick={handleDefaultClick} variant="contained" sx={{mr: "20px"}}>Default</Button>
+            <AutoCompleteSearch />
+        </Box>
     )
 }
 

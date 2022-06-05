@@ -23,7 +23,12 @@ export async function getCityDataAutoComplete(input) {
     const requestStr = `${BASE_URL}/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${input}`;
     const response = await axios.get(requestStr);
 
-    return response.data;
+    const filrtedResults = response.data.map((city) => {
+        return { cityName: city.LocalizedName, key: city.Key, country: city.Country.LocalizedName }
+    })
+
+    console.log(filrtedResults);
+    return filrtedResults;
 }
 
 export async function getCityWeatherByKey(cityKey, isMetric) {

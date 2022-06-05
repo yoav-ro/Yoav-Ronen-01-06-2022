@@ -32,7 +32,7 @@ function FavoriteItem({ favoriteData }) {
     const weatherUnit = prefrences.weatherUnit;
     const weatherText = itemData["WeatherText"];
     const currTemp = itemData["Temperature"][weatherUnit]["Value"];
-    const unitLetter = weatherUnit === "Metric" ? "C" : "F";
+    const unitLetter = weatherUnit === "Metric" ? "C°" : "F°";
     const iconStr = itemData["WeatherIcon"] < 10 ? "0" + itemData["WeatherIcon"] : itemData["WeatherIcon"];
     const iconImgUrl = `https://developer.accuweather.com/sites/default/files/${iconStr}-s.png`;
     const tempText = " " + currTemp + " " + unitLetter;
