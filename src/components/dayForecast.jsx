@@ -1,9 +1,13 @@
-import { Paper, Container } from "@mui/material";
+import { Paper, Grid, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import React from "react";
 
 function DayForecast({ dayForecastData }) {
     const date = new Date(dayForecastData["Date"]);
     const dateStr = `${date.getUTCDate()}/${date.getUTCMonth()}`;
+
+    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const dayName = days[date.getDay()]
 
     const minTemp = dayForecastData["Temperature"]["Minimum"]["Value"];
     const maxTemp = dayForecastData["Temperature"]["Maximum"]["Value"];
@@ -18,24 +22,43 @@ function DayForecast({ dayForecastData }) {
     const nightIconPhrase = dayForecastData["Night"]["IconPhrase"];
     const nightImgUrl = `https://developer.accuweather.com/sites/default/files/${nightIconStr}-s.png`;
 
-
     return (
         <Paper elevation={4} sx={{
-            height: 170,
-            width: 190,
+            height: 160,
+            width: 250,
         }}>
-            <Container>
-                <div>Date: {dateStr} </div>
-                <div>Temp: {minTemp}-{maxTemp} C</div>
-                <div>
-                    Day: {dayIconPhrase} <br />
-                    <img src={dayImgUrl} />
-                </div>
-                <div>
-                    Night: {nightIconPhrase} <br />
-                    <img src={nightImgUrl} />
-                </div>
-            </Container>
+            <Grid container>
+                <Grid item container justifyContent="center">
+                    <Typography variant="h6">{dayName + " " + dateStr}</Typography>
+                </Grid>
+                <Grid item container justifyContent="center">
+                    {minTemp} - {maxTemp} C
+                </Grid>
+                <Grid item container justifyContent="center" spacing={4}>
+                    <Grid item>
+                        <Paper sx={{ backgroundColor: "skyblue", mt: "5px", padding: "3px" }}>
+                            <Grid item container justifyContent="center">Day</Grid>
+                            <Grid item container justifyContent="center">
+                                {dayIconPhrase}
+                            </Grid>
+                            <Grid item container justifyContent="center">
+                                <img src={dayImgUrl} />
+                            </Grid>
+                        </Paper>
+                    </Grid>
+                    <Grid item>
+                        <Paper sx={{ backgroundColor: "#38285c", mt: "5px", padding: "3px", color: "white" }}>
+                            <Grid item container justifyContent="center">Night</Grid>
+                            <Grid item container justifyContent="center">
+                                {nightIconPhrase}
+                            </Grid>
+                            <Grid item container justifyContent="center">
+                                <img src={nightImgUrl} />
+                            </Grid>
+                        </Paper>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Paper>
     )
 }

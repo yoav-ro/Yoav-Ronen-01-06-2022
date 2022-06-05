@@ -4,16 +4,20 @@ import FavoritesPage from './components/favoritesPage';
 import HomePage from './components/homePage';
 import Navbar from './components/navbar';
 
+
 function App() {
   return (
     <div className="App">
+
       <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route exact path="/favorites" element={<FavoritesPage />} />
-        </Routes>
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route exact path="/favorites" element={<FavoritesPage />} />
+          </Routes>
       </BrowserRouter>
+
+
     </div>
   );
 }

@@ -12,17 +12,20 @@ function HomePage({ }) {
     const appData = useSelector(state => state.appDataReducer);
     const currCity = appData.currCityData;
     const [currWeatherDisplay, setCurrWeatherDisplay] = useState({ Headline: { Text: "placeholder" }, DailyForecasts: [] });
-
+    console.log(currCity)
     useEffect(() => {
+        console.log("effect")
         if (currCity.cityName !== "Tel Aviv") {
             if (currCity.cityName === "New York") {
+                console.log("new york")
                 setCurrWeatherDisplay(newYorkMock);
             }
             else {
-                const defaultCityWeather = getCityWeatherByKey(currCity.key);
-                defaultCityWeather.then((value) => {
-                    setCurrWeatherDisplay(value);
-                })
+                console.log("finding new city weather")
+                // const defaultCityWeather = getCityWeatherByKey(currCity.key);
+                // defaultCityWeather.then((value) => {
+                //     setCurrWeatherDisplay(value);
+                // })
             }
 
         }
@@ -30,7 +33,7 @@ function HomePage({ }) {
             setCurrWeatherDisplay(mockForecast);
         }
 
-    }, [])
+    })
 
     return (
         <Box sx={{ mt: "20px", justifyItems: "center" }}>
