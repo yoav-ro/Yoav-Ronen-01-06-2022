@@ -1,5 +1,4 @@
-import { ListItem, ListItemIcon, ListItemText, List, Paper, Typography, Box } from "@mui/material";
-import CloudIcon from '@mui/icons-material/Cloud';
+import { List, Paper, Typography, Box } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import FavoriteItem from "./favoriteItem";
@@ -7,8 +6,24 @@ import FavoriteItem from "./favoriteItem";
 function FavoritesList() {
     const favorites = useSelector(state => state.favoritesReducer);
 
+    if (favorites.length === 0) {
+        return (
+            <Box textAlign="center">
+                <Typography variant="h4">Favorite Cities</Typography>
+                <Paper elevation={5} sx={{
+                    width: 300,
+                    height: 300,
+                    mt: "20px",
+                    overflow: "auto",
+                }}>
+                    <Typography variant="h6">No favorites saved</Typography>
+                </Paper>
+            </Box>
+        )
+    }
+
     return (
-        <Box>
+        <Box textAlign="center">
             <Typography variant="h4">Favorite Cities</Typography>
             <Paper elevation={5} sx={{
                 width: 300,

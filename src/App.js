@@ -24,7 +24,7 @@ function App() {
     navigator.geolocation.getCurrentPosition(handleSuccess, handleFail);
   }, [])
 
-  const handleSuccess = async (value) => { // disabled to not waste api requests
+  const handleSuccess = async (value) => {
     const lat = value.coords.latitude;
     const long = value.coords.longitude;
     const cityData = await getCurrentLocationCity(lat, long);

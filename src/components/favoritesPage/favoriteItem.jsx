@@ -15,13 +15,12 @@ function FavoriteItem({ favoriteData }) {
     useEffect(() => {
         const currWeather = getCurrentWeatherByKey(favoriteData.key);
         currWeather.then((value) => {
-            console.log(value)
             setItemData(value);
-        })
+        });
     }, [])
 
     if (itemData === "") {
-        return <></>
+        return <></>;
     }
 
     const handleClick = () => {
