@@ -12,11 +12,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(handleSuccess, handleFail);
+    navigator.geolocation.getCurrentPosition(handleFail, handleFail);
   }, [])
 
 
-  const handleSuccess = async (value) => {
+  const handleSuccess = async (value) => { // disabled to not waste api requests
     const lat = value.coords.latitude;
     const long = value.coords.longitude;
     const cityData = await getCurrentLocationCity(lat, long);

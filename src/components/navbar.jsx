@@ -1,10 +1,21 @@
-import React from "react";
-import { AppBar, Box, Toolbar, Typography, Button } from "@mui/material";
+import React, { useState } from "react";
+import { AppBar, Box, Toolbar, Typography, Button, IconButton } from "@mui/material";
+import SettingsIcon from '@mui/icons-material/Settings';
 import CloudIcon from '@mui/icons-material/Cloud';
 import { useNavigate } from "react-router-dom";
+import SettingsMenu from "./settingsMenu";
 
 function Navbar() {
     const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    }
 
     const handleHomeClick = () => {
         navigate("/");
@@ -20,11 +31,15 @@ function Navbar() {
             <AppBar position="static" color="primary">
                 <Toolbar>
                     <CloudIcon />
-                    <Typography variant="h5" component="div" sx={{ flexGrow: 1, ml: 1}}>
+                    <Typography variant="h5" component="div" sx={{ flexGrow: 1, ml: 1 }}>
                         Weather
                     </Typography>
                     <Button onClick={handleHomeClick} variant="primary">Home</Button>
                     <Button onClick={handleFavoritesClick} variant="primary">Favorites</Button>
+                    <IconButton onClick={handleMenu}>
+                        <SettingsIcon />
+                    </IconButton>
+                    <SettingsMenu anchorEl={anchorEl} onClose={handleClose}/>
                 </Toolbar>
             </AppBar>
         </Box>

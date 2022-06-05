@@ -6,10 +6,10 @@ import { setCurrCity } from "../utils/actions";
 import { getCityWeatherByKey, getCurrentWeatherByKey } from "../utils/apiRequests";
 import ControlBar from "./controlBar";
 import CityDisplay from "./MainCityDisplay";
-import SearchBar from "./SearchBar";
 
 function HomePage({ }) {
     const prefrences = useSelector(state => state.prefReducer);
+    const isMetric = prefrences.weatherUnit === "Metric";
     const currCity = prefrences.currCityData;
     const [currWeatherDisplay, setCurrWeatherDisplay] = useState("");
 
@@ -24,7 +24,7 @@ function HomePage({ }) {
             else {
                 if (currCity) {
                     console.log("finding new city weather")
-                    // const newForecast = getCityWeatherByKey(currCity.key);
+                    // const newForecast = getCityWeatherByKey(currCity.key, isMetric);
                     // const newCurrentWeather = getCurrentWeatherByKey(currCity.key);
                     // Promise.all([newForecast, newCurrentWeather]).then((values) => {
                     //     setCurrWeatherDisplay({
@@ -38,7 +38,7 @@ function HomePage({ }) {
         else {
             setCurrWeatherDisplay(
                 {
-                    forecast: mockForecast,
+                    forecast: mockForecastC,
                     currWeather: telAvivCurrWeatherMock
                 }
             );
@@ -116,7 +116,7 @@ const newYorkCurrWeatherMock = {
     "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
 }
 
-const mockForecast = {
+const mockForecastC = {
     "Headline": {
         "EffectiveDate": "2022-05-31T20:00:00+03:00",
         "EffectiveEpochDate": 1654016400,
@@ -283,6 +283,177 @@ const mockForecast = {
             ],
             "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us",
             "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us"
+        }
+    ]
+}
+
+const mockForecastF = {
+    "Headline": {
+        "EffectiveDate": "2022-06-05T20:00:00+03:00",
+        "EffectiveEpochDate": 1654448400,
+        "Severity": 7,
+        "Text": "Warm Sunday night",
+        "Category": "heat",
+        "EndDate": "2022-06-06T08:00:00+03:00",
+        "EndEpochDate": 1654491600,
+        "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?lang=en-us",
+        "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?lang=en-us"
+    },
+    "DailyForecasts": [
+        {
+            "Date": "2022-06-05T07:00:00+03:00",
+            "EpochDate": 1654401600,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 71,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 87,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 1,
+                "IconPhrase": "Sunny",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 38,
+                "IconPhrase": "Mostly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&lang=en-us",
+            "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&lang=en-us"
+        },
+        {
+            "Date": "2022-06-06T07:00:00+03:00",
+            "EpochDate": 1654488000,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 71,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 83,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 2,
+                "IconPhrase": "Mostly sunny",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 35,
+                "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&lang=en-us",
+            "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&lang=en-us"
+        },
+        {
+            "Date": "2022-06-07T07:00:00+03:00",
+            "EpochDate": 1654574400,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 72,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 83,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 2,
+                "IconPhrase": "Mostly sunny",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 34,
+                "IconPhrase": "Mostly clear",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&lang=en-us",
+            "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&lang=en-us"
+        },
+        {
+            "Date": "2022-06-08T07:00:00+03:00",
+            "EpochDate": 1654660800,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 73,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 85,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 1,
+                "IconPhrase": "Sunny",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 34,
+                "IconPhrase": "Mostly clear",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&lang=en-us",
+            "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&lang=en-us"
+        },
+        {
+            "Date": "2022-06-09T07:00:00+03:00",
+            "EpochDate": 1654747200,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 75,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 89,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 1,
+                "IconPhrase": "Sunny",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 33,
+                "IconPhrase": "Clear",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&lang=en-us",
+            "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&lang=en-us"
         }
     ]
 }

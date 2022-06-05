@@ -28,7 +28,15 @@ export function setDefaultCity(cityData){
     return {
         type: prefReducerActionTypes.setDefaultCity,
         data: cityData,
-        description: "Sets the defualt city data",
+        description: "Sets the default city data",
+    }
+}
+
+export function setWeatherUnit(newUnit){
+    return{
+        type: prefReducerActionTypes.setWeatherUnit,
+        data: newUnit,
+        description: "Changes the app's weather unit",
     }
 }
 

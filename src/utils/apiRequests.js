@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "http://dataservice.accuweather.com/";
 // const apiKey = process.env.REACT_APP_API_KEY;
-const apiKey= process.env.REACT_APP_API_KEY_ALT;
+const apiKey = process.env.REACT_APP_API_KEY_ALT;
 
 export async function getCityData(cityName) {
     const locationKeyReq = `${BASE_URL}/locations/v1/cities/search?apikey=${apiKey}&q=${cityName}`;
@@ -26,8 +26,8 @@ export async function getCityDataAutoComplete(input) {
     return response.data;
 }
 
-export async function getCityWeatherByKey(cityKey) {
-    const requestStr = `${BASE_URL}/forecasts/v1/daily/5day/${cityKey}?apikey=${apiKey}&metric=true`;
+export async function getCityWeatherByKey(cityKey, isMetric) {
+    const requestStr = `${BASE_URL}/forecasts/v1/daily/5day/${cityKey}?apikey=${apiKey}&metric=${isMetric}`;
     const response = await axios.get(requestStr);
     return response.data;
 }
