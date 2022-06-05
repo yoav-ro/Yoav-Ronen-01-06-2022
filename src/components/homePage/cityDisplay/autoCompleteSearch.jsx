@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useDispatch } from "react-redux";
-
 import { getCityDataAutoComplete } from "../../../utils/apiRequests";
 import { DebounceInput } from "react-debounce-input";
 import { setCurrCity } from "../../../utils/actions";
 
-function AutoCompleteSearch({ }) {
+function AutoCompleteSearch() {
     const [input, setInput] = useState("");
     const [cityOptions, setCityOptions] = useState([]);
     const dispatch = useDispatch();
@@ -19,7 +18,6 @@ function AutoCompleteSearch({ }) {
     const updateOptions = async () => {
         if (input !== "") {
             const autoCompleteOptions = await getCityDataAutoComplete(input);
-            console.log(autoCompleteOptions)
             setCityOptions(autoCompleteOptions);
         }
     }
@@ -27,10 +25,8 @@ function AutoCompleteSearch({ }) {
     const handleSelect = (e) => {
         const selectedCity = cityOptions.find(city => city.cityName === e.target.value)
         if (selectedCity) {
-            console.log(selectedCity);
             dispatch(setCurrCity(selectedCity));
         }
-
     }
 
     return (

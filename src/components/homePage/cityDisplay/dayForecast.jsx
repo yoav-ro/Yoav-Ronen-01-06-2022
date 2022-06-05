@@ -1,5 +1,4 @@
 import { Paper, Grid, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
 import { useSelector } from "react-redux";
 
@@ -31,7 +30,6 @@ function DayForecast({ dayForecastData }) {
     const nightIconPhrase = dayForecastData["Night"]["IconPhrase"];
     const nightImgUrl = `https://developer.accuweather.com/sites/default/files/${nightIconStr}-s.png`;
 
-
     return (
         <Paper elevation={4} sx={{
             height: 175,
@@ -52,7 +50,7 @@ function DayForecast({ dayForecastData }) {
                                 {dayIconPhrase}
                             </Grid>
                             <Grid item container justifyContent="center">
-                                <img src={dayImgUrl} />
+                                <img src={dayImgUrl} alt="Describing the relevant day weather"/>
                             </Grid>
                         </Paper>
                     </Grid>
@@ -63,7 +61,7 @@ function DayForecast({ dayForecastData }) {
                                 {nightIconPhrase}
                             </Grid>
                             <Grid item container justifyContent="center">
-                                <img src={nightImgUrl} />
+                                <img src={nightImgUrl} alt="Describing the relevant night weather"/>
                             </Grid>
                         </Paper>
                     </Grid>
@@ -74,35 +72,3 @@ function DayForecast({ dayForecastData }) {
 }
 
 export default DayForecast;
-// example:
-// {
-//     "Date": "2022-05-31T07:00:00+03:00",
-//     "EpochDate": 1653969600,
-//     "Temperature": {
-//       "Minimum": {
-//         "Value": 21.2,
-//         "Unit": "C",
-//         "UnitType": 17
-//       },
-//       "Maximum": {
-//         "Value": 30.8,
-//         "Unit": "C",
-//         "UnitType": 17
-//       }
-//     },
-//     "Day": {
-//       "Icon": 1,
-//       "IconPhrase": "Sunny",
-//       "HasPrecipitation": false
-//     },
-//     "Night": {
-//       "Icon": 34,
-//       "IconPhrase": "Mostly clear",
-//       "HasPrecipitation": false
-//     },
-//     "Sources": [
-//       "AccuWeather"
-//     ],
-//     "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us",
-//     "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us"
-//   }

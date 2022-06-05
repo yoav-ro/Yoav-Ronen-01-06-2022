@@ -22,7 +22,7 @@ function App() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(handleSuccess, handleFail);
-  }, [])
+  })
 
   const handleSuccess = async (value) => {
     const lat = value.coords.latitude;

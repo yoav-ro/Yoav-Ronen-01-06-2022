@@ -49,7 +49,7 @@ function CityDisplay({ weatherData, cityData }) {
                         </Typography>
                     </Grid>
                     <Grid item sx={{ mt: "20px" }}>
-                        <img src={iconImgUrl} />
+                        <img src={iconImgUrl} alt="Describing the current weather" />
                     </Grid>
                 </Grid>
                 <Grid item justifyContent="center" container spacing={5}>

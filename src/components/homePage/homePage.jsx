@@ -5,16 +5,14 @@ import { getCityWeatherByKey, getCurrentWeatherByKey } from "../../utils/apiRequ
 import ControlBar from "./controlBar";
 import CityDisplay from "./cityDisplay/cityDisplay";
 
-function HomePage({ }) {
+function HomePage() {
     const prefrences = useSelector(state => state.prefReducer);
-    const isMetric = prefrences.weatherUnit === "Metric";
     const currCity = prefrences.currCityData;
     const [currWeatherDisplay, setCurrWeatherDisplay] = useState("");
 
     useEffect(() => {
         if (currCity) {
-            console.log("finding new city weather")
-            const newForecast = getCityWeatherByKey(currCity.key, isMetric);
+            const newForecast = getCityWeatherByKey(currCity.key);
             const newCurrentWeather = getCurrentWeatherByKey(currCity.key);
             Promise.all([newForecast, newCurrentWeather]).then((values) => {
                 setCurrWeatherDisplay({
