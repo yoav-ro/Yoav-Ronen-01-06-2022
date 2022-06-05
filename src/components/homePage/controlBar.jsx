@@ -15,14 +15,14 @@ function ControlBar({ }) {
 
     return (
         <Grid container>
-            <Grid item xs={2}>
-                <Button onClick={handleDefaultClick}>Default</Button>
+            <Grid item xs={2} textAlign="start">
+                <Button onClick={handleDefaultClick} variant="outlined">Default</Button>
             </Grid>
             <Grid item xs={8}>
                 <SearchBar />
             </Grid>
             <Grid item xs={2} textAlign="end">
-                <Button>Chart View</Button>
+                <Button variant="outlined">Chart View</Button>
             </Grid>
         </Grid>
     )

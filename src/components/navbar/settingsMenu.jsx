@@ -1,9 +1,13 @@
+import { useSelect } from "@mui/base";
 import { FormControlLabel, FormGroup, Menu, MenuItem, Switch } from "@mui/material";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setWeatherUnit } from "../../utils/actions";
 
 function SettingsMenu({ anchorEl, onClose, setDarkMode }) {
+    const prefrences = useSelector(state => state.prefReducer);
+    console.log(prefrences);
+    const defaultCity = prefrences.defaultCityData ? prefrences.defaultCityData.cityName : "";
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
@@ -41,6 +45,9 @@ function SettingsMenu({ anchorEl, onClose, setDarkMode }) {
                 <FormGroup>
                     <FormControlLabel control={<Switch onChange={handleChangeDarkMode} />} label="Dark Mode" />
                 </FormGroup>
+            </MenuItem>
+            <MenuItem>
+                Default City: {defaultCity}
             </MenuItem>
         </Menu>
     )

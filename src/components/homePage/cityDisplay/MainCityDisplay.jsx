@@ -1,10 +1,14 @@
-import { Grid, Typography, Paper } from "@mui/material";
-import React from "react";
+import { Grid, Typography, Paper, Button, Snackbar, Alert } from "@mui/material";
+import React, { useState } from "react";
 import DayForecast from "./dayForecast";
 import CityHeader from "./cityHeader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setDefaultCity } from "../../../utils/actions";
 
 function CityDisplay({ weatherData, cityData }) {
+    const [openAlert, setOpenAlert] = useState(false);
+    const dispatch = useDispatch();
+
     const prefrences = useSelector(state => state.prefReducer);
     if (weatherData === "") {
         return <></>;
@@ -18,6 +22,19 @@ function CityDisplay({ weatherData, cityData }) {
     const unitLetter = weatherUnit === "Metric" ? "C" : "F";
     const iconStr = currWeather["WeatherIcon"] < 10 ? "0" + currWeather["WeatherIcon"] : currWeather["WeatherIcon"];
     const iconImgUrl = `https://developer.accuweather.com/sites/default/files/${iconStr}-s.png`;
+
+    const handleClick = () => {
+        dispatch(setDefaultCity(cityData));
+        setOpenAlert(true);
+    }
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenAlert(false);
+    };
 
     return (
         <Paper sx={{ mt: "40px", padding: "20px" }} elevation={5}>
@@ -34,8 +51,6 @@ function CityDisplay({ weatherData, cityData }) {
                     <Grid item sx={{ mt: "20px" }}>
                         <img src={iconImgUrl} />
                     </Grid>
-
-
                 </Grid>
                 <Grid item justifyContent="center" container spacing={5}>
                     {dailyForeCasts.map((day, key) => {
@@ -46,7 +61,21 @@ function CityDisplay({ weatherData, cityData }) {
                         )
                     })}
                 </Grid>
+                <Grid item container justifyContent="center">
+                    <Button onClick={handleClick}>Set as default</Button>
+                </Grid>
             </Grid>
+
+            <Snackbar
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                open={openAlert}
+                onClose={handleClose}
+                autoHideDuration={2000}
+            >
+                <Alert severity="success" onClose={handleClose}>
+                    Default city is now {cityData.cityName}
+                </Alert>
+            </Snackbar>
         </Paper>
 
     )
