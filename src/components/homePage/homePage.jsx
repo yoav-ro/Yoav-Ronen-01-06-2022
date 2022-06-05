@@ -2,10 +2,10 @@ import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrCity } from "../utils/actions";
-import { getCityWeatherByKey, getCurrentWeatherByKey } from "../utils/apiRequests";
+import { setCurrCity } from "../../utils/actions";
+import { getCityWeatherByKey, getCurrentWeatherByKey } from "../../utils/apiRequests";
 import ControlBar from "./controlBar";
-import CityDisplay from "./MainCityDisplay";
+import CityDisplay from "./cityDisplay/MainCityDisplay";
 
 function HomePage({ }) {
     const prefrences = useSelector(state => state.prefReducer);

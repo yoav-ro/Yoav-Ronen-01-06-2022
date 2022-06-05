@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import FavoritesPage from './components/favoritesPage';
-import HomePage from './components/homePage';
-import Navbar from './components/navbar';
+import FavoritesPage from './components/favoritesPage/favoritesPage';
+import HomePage from './components/homePage/homePage';
+import Navbar from './components/navbar/navbar';
 import { setCurrCity, setDefaultCity } from './utils/actions';
 import { getCurrentLocationCity } from './utils/apiRequests';
 import { telAvivData } from './utils/constants';

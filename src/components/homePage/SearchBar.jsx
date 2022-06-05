@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Alert, Button, Snackbar, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import SearchIcon from '@mui/icons-material/Search';
-import { getCityData } from "../utils/apiRequests";
+import { getCityData } from "../../utils/apiRequests";
 import { useDispatch } from "react-redux";
-import { setCurrCity } from "../utils/actions";
+import { setCurrCity } from "../../utils/actions";
 
 function SearchBar({ }) {
     const [input, setInput] = useState("");

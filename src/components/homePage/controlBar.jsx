@@ -1,7 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrCity } from "../utils/actions";
+import { setCurrCity } from "../../utils/actions";
 import SearchBar from "./SearchBar";
 
 function ControlBar({ }) {

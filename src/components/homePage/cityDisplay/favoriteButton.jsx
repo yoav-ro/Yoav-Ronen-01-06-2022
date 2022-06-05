@@ -4,7 +4,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone';
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Icon, IconButton, Tooltip } from "@mui/material";
-import { addFavorite, removeFavorite } from "../utils/actions";
+import { addFavorite, removeFavorite } from "../../../utils/actions";
 
 function FavoriteButton({ cityData }) {
     const favorites = useSelector(state => state.favoritesReducer);

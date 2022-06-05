@@ -1,7 +1,7 @@
 import { FormControlLabel, FormGroup, Menu, MenuItem, Switch } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setWeatherUnit } from "../utils/actions";
+import { setWeatherUnit } from "../../utils/actions";
 
 function SettingsMenu({ anchorEl, onClose }) {
     const dispatch = useDispatch();
