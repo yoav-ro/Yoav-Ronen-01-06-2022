@@ -8,7 +8,6 @@ import Navbar from './components/navbar';
 function App() {
   return (
     <div className="App">
-
       <BrowserRouter>
           <Navbar />
           <Routes>
@@ -16,8 +15,6 @@ function App() {
             <Route exact path="/favorites" element={<FavoritesPage />} />
           </Routes>
       </BrowserRouter>
-
-
     </div>
   );
 }

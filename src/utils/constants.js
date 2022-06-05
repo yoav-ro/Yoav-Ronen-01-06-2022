@@ -3,7 +3,7 @@ export const favoritesReducerActionTypes={
     removeFavorite: "REMOVE_FAVORITE",
 }
 
-export const appDataReducerActionTypes={
+export const prefReducerActionTypes={
     setCurrCityData: "SET_CURR_CITY_DATA",
     setDefaultCity: "SET_DEFAULT_CITY",
     setCurrCityWeather: "SET_CURR_CITY_WEATHER",

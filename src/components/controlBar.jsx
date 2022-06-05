@@ -5,8 +5,8 @@ import { setCurrCity } from "../utils/actions";
 import SearchBar from "./SearchBar";
 
 function ControlBar({ }) {
-    const appData = useSelector(state => state.appDataReducer);
-    const defaultCity = appData.defaultCityData;
+    const prefrences = useSelector(state => state.prefReducer);
+    const defaultCity = prefrences.defaultCityData;
     const dispatch = useDispatch();
 
     const handleDefaultClick = () => {

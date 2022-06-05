@@ -3,37 +3,47 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrCity } from "../utils/actions";
-import { getCityWeatherByKey } from "../utils/apiRequests";
+import { getCityWeatherByKey, getCurrentWeatherByKey } from "../utils/apiRequests";
 import ControlBar from "./controlBar";
 import CityDisplay from "./MainCityDisplay";
 import SearchBar from "./SearchBar";
 
 function HomePage({ }) {
-    const appData = useSelector(state => state.appDataReducer);
-    const currCity = appData.currCityData;
-    const [currWeatherDisplay, setCurrWeatherDisplay] = useState({ Headline: { Text: "placeholder" }, DailyForecasts: [] });
-    console.log(currCity)
+    const prefrences = useSelector(state => state.prefReducer);
+    const currCity = prefrences.currCityData;
+    const [currWeatherDisplay, setCurrWeatherDisplay] = useState("");
+
     useEffect(() => {
-        console.log("effect")
         if (currCity.cityName !== "Tel Aviv") {
             if (currCity.cityName === "New York") {
-                console.log("new york")
-                setCurrWeatherDisplay(newYorkMock);
+                setCurrWeatherDisplay({
+                    forecast: newYorkMock,
+                    currWeather: newYorkCurrWeatherMock
+                });
             }
             else {
                 console.log("finding new city weather")
-                // const defaultCityWeather = getCityWeatherByKey(currCity.key);
-                // defaultCityWeather.then((value) => {
-                //     setCurrWeatherDisplay(value);
-                // })
+                // const newForecast = getCityWeatherByKey(currCity.key);
+                // const newCurrentWeather = getCurrentWeatherByKey(currCity.key);
+                // Promise.all([newForecast, newCurrentWeather]).then((values) => {
+                //     setCurrWeatherDisplay({
+                //         forecast: values[0],
+                //         currWeather: values[1],
+                //     });
+                // });
             }
 
         }
         else {
-            setCurrWeatherDisplay(mockForecast);
+            setCurrWeatherDisplay(
+                {
+                    forecast: mockForecast,
+                    currWeather: telAvivCurrWeatherMock
+                }
+            );
         }
 
-    })
+    }, [currCity])
 
     return (
         <Box sx={{ mt: "20px", justifyItems: "center" }}>
@@ -55,6 +65,54 @@ const newYorkCityData = {
     cityName: "New York",
     key: 349727,
     country: "United States",
+}
+
+const telAvivCurrWeatherMock = {
+    "LocalObservationDateTime": "2022-06-05T15:05:00+03:00",
+    "EpochTime": 1654430700,
+    "WeatherText": "Sunny",
+    "WeatherIcon": 1,
+    "HasPrecipitation": false,
+    "PrecipitationType": null,
+    "IsDayTime": true,
+    "Temperature": {
+        "Metric": {
+            "Value": 29.4,
+            "Unit": "C",
+            "UnitType": 17
+        },
+        "Imperial": {
+            "Value": 85,
+            "Unit": "F",
+            "UnitType": 18
+        }
+    },
+    "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us",
+    "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
+}
+
+const newYorkCurrWeatherMock = {
+    "LocalObservationDateTime": "2022-06-05T15:05:00+03:00",
+    "EpochTime": 1654430700,
+    "WeatherText": "New york thing",
+    "WeatherIcon": 1,
+    "HasPrecipitation": false,
+    "PrecipitationType": null,
+    "IsDayTime": true,
+    "Temperature": {
+        "Metric": {
+            "Value": 29.4,
+            "Unit": "C",
+            "UnitType": 17
+        },
+        "Imperial": {
+            "Value": 85,
+            "Unit": "F",
+            "UnitType": 18
+        }
+    },
+    "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us",
+    "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
 }
 
 const mockForecast = {

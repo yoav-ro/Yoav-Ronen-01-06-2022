@@ -18,9 +18,25 @@ export async function getCityData(cityName) {
     return cityData;
 }
 
+export async function getCityDataAutoComplete(input) {
+    const requestStr = `${BASE_URL}/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${input}`;
+    const response = await axios.get(requestStr);
+
+    return response.data;
+}
+
 export async function getCityWeatherByKey(cityKey) {
     const requestStr = `${BASE_URL}/forecasts/v1/daily/5day/${cityKey}?apikey=${apiKey}&metric=true`;
     const response = await axios.get(requestStr);
+    return response.data;
+}
+
+export async function getCurrentWeatherByKey(cityKey) {
+    const requestStr = `${BASE_URL}/currentconditions/v1/${cityKey}?apikey=${apiKey}`;
+    const response = await axios.get(requestStr);
+    if (response.data.code === 400) {
+        return { error: "City not found" };
+    }
     return response.data;
 }
 

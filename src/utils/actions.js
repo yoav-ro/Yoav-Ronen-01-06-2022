@@ -1,4 +1,4 @@
-import { appDataReducerActionTypes, favoritesReducerActionTypes } from "./constants";
+import { prefReducerActionTypes, favoritesReducerActionTypes } from "./constants";
 
 export function addFavorite(data) {
     return {
@@ -18,7 +18,7 @@ export function removeFavorite(favoriteKey) {
 
 export function setCurrCity(cityData){
     return {
-        type: appDataReducerActionTypes.setCurrCityData,
+        type: prefReducerActionTypes.setCurrCityData,
         data: cityData,
         description: "Sets the current city data",
     }
@@ -26,7 +26,7 @@ export function setCurrCity(cityData){
 
 export function setDefaultCity(cityData){
     return {
-        type: appDataReducerActionTypes.setDefaultCity,
+        type: prefReducerActionTypes.setDefaultCity,
         data: cityData,
         description: "Sets the defualt city data",
     }
