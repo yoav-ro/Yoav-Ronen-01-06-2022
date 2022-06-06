@@ -1,7 +1,8 @@
 # Weather App
 
-Welcome to the weather app! View deployment [https://yoav-ro.github.io/abra-weather/build/index.html](here)
-Weather data provided via [https://developer.accuweather.com/](AccuWeatherAPIs)
+Welcome to the weather app! View deployment [here](https://yoav-ro.github.io/Yoav-Ronen-01-06-2022/build/index.html)
+
+Weather data provided via [AccuWeatherAPIs](https://developer.accuweather.com/)
 
 ## Features
 
@@ -14,4 +15,4 @@ Weather data provided via [https://developer.accuweather.com/](AccuWeatherAPIs)
 
 ## Technologies
 
-The app was build using React with Redux for state management. Material UI library was also used.
+The app was build using React with Redux for state management. Material UI was also used.
