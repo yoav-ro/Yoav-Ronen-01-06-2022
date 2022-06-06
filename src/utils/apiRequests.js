@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const BASE_URL = "https://dataservice.accuweather.com/";
-const apiKey = process.env.REACT_APP_API_KEY;
+// const apiKey = process.env.REACT_APP_API_KEY;
+const apiKey=process.env.REACT_APP_API_KEY_ALT2
 
 export async function getCityDataAutoComplete(input) {
     const requestStr = `${BASE_URL}/locations/v1/cities/autocomplete?apikey=${apiKey}&q=${input}`;
