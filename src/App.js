@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import FavoritesPage from './components/favoritesPage/favoritesPage';
 import HomePage from './components/homePage/homePage';
 import Navbar from './components/navbar/navbar';
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
           <Navbar setDarkMode={setDarkMode} />
@@ -48,7 +48,7 @@ function App() {
             <Route exact path="/favorites" element={<FavoritesPage />} />
           </Routes>
         </ThemeProvider>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
