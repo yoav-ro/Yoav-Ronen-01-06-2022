@@ -17,7 +17,7 @@ function FavoriteItem({ favoriteData }) {
         currWeather.then((value) => {
             setItemData(value);
         });
-    })
+    }, [favoriteData.key])
 
     if (itemData === "") {
         return <></>;
@@ -39,7 +39,7 @@ function FavoriteItem({ favoriteData }) {
     return (
         <ListItemButton onClick={handleClick} divider>
             <ListItemIcon>
-                <img src={iconImgUrl} alt="Describing the current weather"/>
+                <img src={iconImgUrl} alt="Describing the current weather" />
             </ListItemIcon>
             <ListItemText primary={cityName} secondary={weatherText + tempText} />
         </ListItemButton>
