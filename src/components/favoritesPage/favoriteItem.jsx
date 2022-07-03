@@ -17,7 +17,7 @@ function FavoriteItem({ favoriteData }) {
         currWeather.then((value) => {
             setItemData(value);
         });
-    }, [favoriteData.key])
+    }, [favoriteData])
 
     if (itemData === "") {
         return <></>;
